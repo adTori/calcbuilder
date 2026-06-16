@@ -1,5 +1,6 @@
 import { projects, ProjectType } from '@/lib/materials';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/lib/i18n';
 
 interface ProjectSelectorProps {
   selected: ProjectType | null;
@@ -7,6 +8,7 @@ interface ProjectSelectorProps {
 }
 
 export function ProjectSelector({ selected, onSelect }: ProjectSelectorProps) {
+  const { t } = useLanguage();
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
       {projects.map((project) => (
@@ -25,8 +27,8 @@ export function ProjectSelector({ selected, onSelect }: ProjectSelectorProps) {
             {project.icon}
           </span>
           <div className="text-center">
-            <p className="font-display font-semibold text-foreground">{project.name}</p>
-            <p className="text-xs text-muted-foreground">{project.description}</p>
+            <p className="font-display font-semibold text-foreground">{t(`project.${project.id}.name`)}</p>
+            <p className="text-xs text-muted-foreground">{t(`project.${project.id}.desc`)}</p>
           </div>
           {selected === project.id && (
             <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary animate-pulse" />

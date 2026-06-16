@@ -1,5 +1,6 @@
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useLanguage } from '@/lib/i18n';
 
 interface DimensionInputProps {
   length: string;
@@ -14,12 +15,13 @@ export function DimensionInput({
   onLengthChange,
   onWidthChange,
 }: DimensionInputProps) {
+  const { t } = useLanguage();
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-4">
         <div className="flex-1 space-y-2">
           <Label htmlFor="length" className="text-sm font-medium text-foreground">
-            Length
+            {t('dim.length')}
           </Label>
           <div className="relative">
             <Input
@@ -44,7 +46,7 @@ export function DimensionInput({
 
         <div className="flex-1 space-y-2">
           <Label htmlFor="width" className="text-sm font-medium text-foreground">
-            Width
+            {t('dim.width')}
           </Label>
           <div className="relative">
             <Input
@@ -66,7 +68,7 @@ export function DimensionInput({
 
       {length && width && (
         <div className="flex items-center justify-center gap-2 p-3 bg-secondary/50 rounded-lg">
-          <span className="text-sm text-muted-foreground">Total Area:</span>
+          <span className="text-sm text-muted-foreground">{t('dim.totalArea')}</span>
           <span className="font-display font-bold text-lg text-primary">
             {(parseFloat(length) * parseFloat(width)).toFixed(2)} m²
           </span>
