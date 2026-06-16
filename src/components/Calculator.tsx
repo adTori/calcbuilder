@@ -5,8 +5,10 @@ import { MaterialResults } from './MaterialResults';
 import { calculateMaterials, ProjectType } from '@/lib/materials';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { useLanguage } from '@/lib/i18n';
 
 export function Calculator() {
+  const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
   const [length, setLength] = useState('');
   const [width, setWidth] = useState('');
@@ -44,14 +46,14 @@ export function Calculator() {
         <>
           <Card className="p-6 card-shadow">
             <h2 className="font-display text-lg font-semibold text-foreground mb-4">
-              1. Select Your Project
+              {t('calc.step1')}
             </h2>
             <ProjectSelector selected={selectedProject} onSelect={setSelectedProject} />
           </Card>
 
           <Card className="p-6 card-shadow">
             <h2 className="font-display text-lg font-semibold text-foreground mb-4">
-              2. Enter Dimensions
+              {t('calc.step2')}
             </h2>
             <DimensionInput
               length={length}
@@ -67,7 +69,7 @@ export function Calculator() {
             className="w-full h-14 text-lg font-display font-semibold"
             size="lg"
           >
-            Calculate Materials
+            {t('calc.calculate')}
           </Button>
         </>
       ) : (
@@ -78,7 +80,7 @@ export function Calculator() {
             variant="outline"
             className="w-full h-12 font-display"
           >
-            Start New Calculation
+            {t('calc.reset')}
           </Button>
         </>
       )}
