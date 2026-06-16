@@ -12,7 +12,7 @@ const Index = () => {
             </div>
             <div>
               <h1 className="font-display text-xl font-bold text-foreground">
-                BuildCalc
+                CalcBuilder
               </h1>
               <p className="text-xs text-muted-foreground">Material Calculator</p>
             </div>
